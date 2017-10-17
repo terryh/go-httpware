@@ -4,11 +4,11 @@ import (
 	"net/http"
 
 	"github.com/didip/tollbooth"
-	"github.com/didip/tollbooth/config"
+	"github.com/didip/tollbooth/limiter"
 )
 
 // Limiter middleware which use "github.com/didip/tollbooth"
-func Limiter(limiterconfig *config.Limiter) func(next http.Handler) http.Handler {
+func Limiter(limiterconfig *limiter.Limiter) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return tollbooth.LimitHandler(limiterconfig, next)
 	}
